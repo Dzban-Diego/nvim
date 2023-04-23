@@ -70,6 +70,16 @@ require('lazy').setup({
   'github/copilot.vim',
 
   'prettier/vim-prettier',
+  'neoclide/npm.nvim',
+  'Shougo/denite.nvim',
+
+  -- eslint
+  'neovim/nvim-lspconfig',
+  'jose-elias-alvarez/null-ls.nvim',
+  'MunifTanjim/eslint.nvim',
+
+  -- prisma
+  'prisma/vim-prisma',
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -474,15 +484,6 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -522,4 +523,5 @@ vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
 
 
 -- Git related keys
-vim.keymap.set('n', '<Leader>gic', vim.cmd.Git)
+vim.keymap.set('n', '<Leader>gp', function() vim.cmd.Git({ args = { 'push' } }) end)
+vim.keymap.set('n', '<Leader>p', vim.cmd.PrettierAsync)
