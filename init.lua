@@ -502,11 +502,10 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 
-vim.keymap.set({'n', 'v'}, 'n', 'h')
-vim.keymap.set({'n', 'v'}, 'n', 'h')
-vim.keymap.set({'n', 'v'}, 'i', 'j')
-vim.keymap.set({'n', 'v'}, 'e', 'k')
-vim.keymap.set({'n', 'v'}, 'o', 'l')
+vim.keymap.set({'n', 'v', 'x'}, 'n', 'h')
+vim.keymap.set({'n', 'v', 'x'}, 'i', 'j')
+vim.keymap.set({'n', 'v', 'x'}, 'e', 'k')
+vim.keymap.set({'n', 'v', 'x'}, 'o', 'l')
 vim.keymap.set({'n', 'x'}, 'm', 'i')
 vim.keymap.set({'n', 'v'}, 'M', 'I')
 vim.keymap.set({'n', 'v'}, 'l', 'o')
