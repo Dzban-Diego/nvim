@@ -42,6 +42,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -153,7 +154,7 @@ require('lazy').setup({
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     opts = {
-      char = '>',
+    char = '|',
       show_trailing_blankline_indent = false,
     },
   },
@@ -162,7 +163,7 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' }, },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -298,6 +299,7 @@ vim.keymap.set('n', '<leader>se', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').git_files, { desc = '[S]earch in [G]it' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymap' })
+vim.keymap.set('n', '<leader>sb', require('telescope.builtin').git_branches, { desc = '[S]earch [B]ranches' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -518,9 +520,12 @@ vim.keymap.set({'n', 'v'}, '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 
-vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
-
+vim.keymap.set('n', '<Leader>p', vim.cmd.PrettierAsync)
 
 -- Git related keys
+local gs = package.loaded.gitsigns
+vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
 vim.keymap.set('n', '<Leader>gp', function() vim.cmd.Git({ args = { 'push' } }) end)
-vim.keymap.set('n', '<Leader>p', vim.cmd.PrettierAsync)
+vim.keymap.set('n', 'gn', '<cmd>diffget //2<CR>')
+vim.keymap.set('n', 'go', '<cmd>diffget //3<CR>')
+vim.keymap.set('n', 'td', gs.preview_hunk)
