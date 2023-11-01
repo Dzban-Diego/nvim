@@ -1,4 +1,4 @@
-require('modules.variables')
-require('modules.plugins')
-require('modules.mason')
-require('modules.keymap')
+require("variables")
+require('plugins')
+require('LSPsetup')
+require('keymap')
