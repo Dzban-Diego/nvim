@@ -2,6 +2,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- wyłączenie netrw
+vim.g.loaded_netrw = 1
+vim.opt.termguicolors = true
+
 vim.g.shiftwidth = 2
 vim.g.tabstop = 2
 
@@ -43,3 +47,5 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+shiftwidth = 2
+tabstop = 2

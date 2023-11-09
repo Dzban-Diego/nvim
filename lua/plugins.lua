@@ -21,6 +21,7 @@ require('lazy').setup({
   'neovim/nvim-lspconfig',
   'jose-elias-alvarez/null-ls.nvim',
   'MunifTanjim/eslint.nvim',
+  'nvim-tree/nvim-web-devicons',
 
   -- prisma
   'prisma/vim-prisma',
@@ -32,6 +33,17 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  -- file explorer
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    require("nvim-tree").setup {}
+  end,
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -228,5 +240,26 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+
 -- Setup neovim lua configuration
 require('neodev').setup()
+
+
+local function my_on_attach(bufnr)
+  local api = require "nvim-tree.api"
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+  vim.keymap.set('n', 'e', 'k', opts('.'))
+end
+
+require("nvim-tree").setup({
+  on_attach = my_on_attach,
+})

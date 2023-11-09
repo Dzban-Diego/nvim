@@ -47,7 +47,7 @@ vim.keymap.set({'n', 'v'}, 'h', 'nzzzv')
 vim.keymap.set({'n', 'v'}, 'H', 'Nzzzv')
 vim.keymap.set({'n', 'v'}, '<C-u>', '<C-u>zz')
 vim.keymap.set({'n', 'v'}, '<C-d>', '<C-d>zz')
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>ft', vim.cmd.NvimTreeOpen)
 
 vim.keymap.set('n', '<Leader>p', vim.cmd.PrettierAsync)
 
