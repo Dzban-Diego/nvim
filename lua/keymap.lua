@@ -33,23 +33,23 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- colekack remap
 
 if true then
-  vim.keymap.set({'n', 'v', 'x'}, 'n', 'h')
-  vim.keymap.set({'n', 'v', 'x'}, 'i', 'j')
-  vim.keymap.set({'n', 'v', 'x'}, 'e', 'k')
-  vim.keymap.set({'n', 'v', 'x'}, 'o', 'l')
-  vim.keymap.set({'n', 'x'}, 'm', 'i')
-  vim.keymap.set({'n', 'v'}, 'M', 'I')
-  vim.keymap.set({'n', 'v'}, 'l', 'o')
-  vim.keymap.set({'n', 'v'}, 'L', 'O')
+  vim.keymap.set({ 'n', 'v', 'x' }, 'n', 'h')
+  vim.keymap.set({ 'n', 'v', 'x' }, 'i', 'j')
+  vim.keymap.set({ 'n', 'v', 'x' }, 'e', 'k')
+  vim.keymap.set({ 'n', 'v', 'x' }, 'o', 'l')
+  vim.keymap.set({ 'n', 'x' }, 'm', 'i')
+  vim.keymap.set({ 'n', 'v' }, 'M', 'I')
+  vim.keymap.set({ 'n', 'v' }, 'l', 'o')
+  vim.keymap.set({ 'n', 'v' }, 'L', 'O')
 end
 
-vim.keymap.set({'n', 'v'}, 'h', 'nzzzv')
-vim.keymap.set({'n', 'v'}, 'H', 'Nzzzv')
-vim.keymap.set({'n', 'v'}, '<C-u>', '<C-u>zz')
-vim.keymap.set({'n', 'v'}, '<C-d>', '<C-d>zz')
+vim.keymap.set({ 'n', 'v' }, 'h', 'nzzzv')
+vim.keymap.set({ 'n', 'v' }, 'H', 'Nzzzv')
+vim.keymap.set({ 'n', 'v' }, '<C-u>', '<C-u>zz')
+vim.keymap.set({ 'n', 'v' }, '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<leader>ft', vim.cmd.NvimTreeOpen)
 
-vim.keymap.set('n', '<Leader>p', vim.cmd.PrettierAsync)
+vim.keymap.set('n', '<Leader>f', vim.cmd.Format)
 
 -- Git related keys
 local gs = package.loaded.gitsigns
