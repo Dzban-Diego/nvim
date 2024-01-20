@@ -16,6 +16,7 @@ require('lazy').setup({
   'prettier/vim-prettier',
   'neoclide/npm.nvim',
   'Shougo/denite.nvim',
+  'mbbill/undotree',
 
   -- eslint
   'neovim/nvim-lspconfig',
@@ -77,7 +78,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',          opts = {} },
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -121,7 +122,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '0.1.4', dependencies = { 'nvim-lua/plenary.nvim' }, },
@@ -149,11 +150,16 @@ require('lazy').setup({
     end,
   },
 
+
   'nvim-treesitter/nvim-treesitter-context',
 }, {})
 
 require 'colorizer'.setup({})
 
+require'treesitter-context'.setup{
+  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+  multiline_threshold = 1, -- Maximum number of lines to show for a single context
+}
 
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -182,6 +188,10 @@ pcall(require('telescope').load_extension, 'fzf')
 
 -- [[ Configure Treesitter ]]
 require('nvim-treesitter.configs').setup {
+  modules = {},
+  sync_install = true,
+  ignore_install = {},
+  TSConfig = {},
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
 
@@ -190,8 +200,8 @@ require('nvim-treesitter.configs').setup {
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
-    incremental_selection = {
-        enable = true,
+  incremental_selection = {
+    enable = true,
     keymaps = {
       init_selection = '<c-space>',
       node_incremental = '<c-space>',
@@ -269,27 +279,4 @@ require("nvim-tree").setup({
   on_attach = my_on_attach,
 })
 
-local highlight = {
-    "RainbowRed",
-    "RainbowYellow",
-    "RainbowBlue",
-    "RainbowOrange",
-    "RainbowGreen",
-    "RainbowViolet",
-    "RainbowCyan",
-}
-
-local hooks = require "ibl.hooks"
--- create the highlight groups in the highlight setup hook, so they are reset
--- every time the colorscheme changes
-hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
-end)
-
-require("ibl").setup { indent = { highlight = highlight } }
+require("ibl").setup {}
