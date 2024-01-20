@@ -13,7 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  'prettier/vim-prettier',
   'neoclide/npm.nvim',
   'Shougo/denite.nvim',
   'mbbill/undotree',
