@@ -42,6 +42,7 @@ end
 
 local servers = {
   tsserver = {},
+  rust_analyzer = {},
 
   lua_ls = {
     Lua = {

@@ -17,6 +17,15 @@ require('lazy').setup({
   'Shougo/denite.nvim',
   'mbbill/undotree',
 
+  -- RUST
+  "rust-lang/rust.vim",
+  'ThePrimeagen/vim-be-good',
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^4', -- Recommended
+    ft = { 'rust' },
+  },
+
   -- eslint
   'neovim/nvim-lspconfig',
   'jose-elias-alvarez/null-ls.nvim',
@@ -75,6 +84,10 @@ require('lazy').setup({
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "saadparwaiz1/cmp_luasnip",
+  "hrsh7th/cmp-nvim-lua",
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',          opts = {} },
@@ -155,8 +168,8 @@ require('lazy').setup({
 
 require 'colorizer'.setup({})
 
-require'treesitter-context'.setup{
-  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+require 'treesitter-context'.setup {
+  enable = true,           -- Enable this plugin (Can be enabled/disabled later via commands)
   multiline_threshold = 1, -- Maximum number of lines to show for a single context
 }
 
