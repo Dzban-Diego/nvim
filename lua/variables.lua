@@ -52,4 +52,3 @@ vim.o.tabstop = 2
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 vim.opt.shell = '/bin/bash'
-vim.o.background = "dark"

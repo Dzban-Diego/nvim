@@ -18,22 +18,13 @@ require('lazy').setup({
   'mbbill/undotree',
 
   -- RUST
-  "rust-lang/rust.vim",
   'ThePrimeagen/vim-be-good',
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
-    ft = { 'rust' },
-  },
 
   -- eslint
   'neovim/nvim-lspconfig',
   'jose-elias-alvarez/null-ls.nvim',
   'MunifTanjim/eslint.nvim',
   'nvim-tree/nvim-web-devicons',
-
-  -- prisma
-  'prisma/vim-prisma',
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -51,7 +42,8 @@ require('lazy').setup({
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
-    require("nvim-tree").setup {}
+    require("nvim-tree").setup {
+    }
   end,
 
   -- NOTE: This is where your plugins related to LSP can be installed.
@@ -84,10 +76,13 @@ require('lazy').setup({
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
+  'hrsh7th/cmp-nvim-lsp',
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-nvim-lua",
+  'hrsh7th/cmp-nvim-lsp-signature-help',
+  'ray-x/lsp_signature.nvim',
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',          opts = {} },
@@ -271,7 +266,6 @@ require('nvim-treesitter.configs').setup {
 -- Setup neovim lua configuration
 require('neodev').setup()
 
-
 local function my_on_attach(bufnr)
   local api = require "nvim-tree.api"
 
@@ -289,6 +283,12 @@ end
 
 require("nvim-tree").setup({
   on_attach = my_on_attach,
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    }
+  }
 })
 
-require("ibl").setup {}
+require("ibl").setup({})
+require "lsp_signature".setup({})
