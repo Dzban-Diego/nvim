@@ -42,6 +42,9 @@ end
 
 local servers = {
   tsserver = {},
+  biome = {
+    root_dir = { 'biome.json', 'biome.jsonc' }
+  },
 
   lua_ls = {
     Lua = {
